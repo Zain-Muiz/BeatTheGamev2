@@ -1,0 +1,19 @@
+{
+  "name": "beatthegamev2",
+  "version": "1.0.0",
+  "description": "Beat the game web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zain-Muiz/BeatTheGamev2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zain-Muiz/BeatTheGamev2/issues"
+  },
+  "homepage": "https://github.com/Zain-Muiz/BeatTheGamev2#readme"
+}

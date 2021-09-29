@@ -1,4 +1,4 @@
-<h2 align="center"> Beat The Game </h2>
+<h2 align="center"> Beat The Game - v2.0 </h2>
 <p align="center">An IPL Fantasy platform powered by 404 ISTE TKMCE</p>
 
 <hr>

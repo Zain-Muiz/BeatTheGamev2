@@ -8,4 +8,4 @@
  - React.js
 
 ### Terms and Conditions :
- - Use only for internal university purposes. Using publicly with real names of teams and players is considers as infringement of copyright
+ - Use only for internal university purposes. Using publicly with real names of teams and players could be considered as infringement of copyright

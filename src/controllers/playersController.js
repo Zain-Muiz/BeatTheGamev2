@@ -4,11 +4,11 @@ const db = require("../db/models");
 const { Op } = require("sequelize");
 
 module.exports.GetAllPlayers = async (req, res) => {
-  const username = req.jwtusername;
+  const useremail = req.jwtemail;
   const team1 = req.params.team1;
   const team2 = req.params.team2;
 
-  db.myteams.findOne({ where: { username: username } }).then((user) => {
+  db.myteams.findOne({ where: { useremail } }).then((user) => {
     if (user) {
       res.status(308).send({
         message: "Team already created",

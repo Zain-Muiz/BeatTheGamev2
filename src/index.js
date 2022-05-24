@@ -8,7 +8,11 @@ const host = process.env.HOST;
 const port = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const whitelist = ["http://localhost:3000", "http://btg.istetkmce.in"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://btg.istetkmce.in",
+  "https://btg.istetkmce.in",
+];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {

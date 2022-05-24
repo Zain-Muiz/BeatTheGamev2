@@ -46,7 +46,6 @@ module.exports.createUserTeam = async (req, res) => {
   const { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } = req.body;
   const useremail = req.jwtemail;
   const username = req.jwtusername;
-  console.log(username);
 
   db.myteams
     .create({
@@ -92,4 +91,18 @@ module.exports.getLeaderboard = async (req, res) => {
         message: err.message || "Error occurred while fetching leaderboard.",
       });
     });
+};
+
+module.exports.getUserTeam = async (req, res) => {
+  const username = req.jwtusername;
+
+  db.myteams.findOne({ where: { username: username } }).then((user) => {
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(308).send({
+        message: "Create team",
+      });
+    }
+  });
 };

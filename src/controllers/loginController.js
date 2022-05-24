@@ -24,10 +24,11 @@ module.exports.handleLogin = (req, res) => {
       });
     } else {
       const username = user.username;
+      const score = user.score;
       const token = jwt.sign({ email, username }, process.env.jwtsign, {
         expiresIn: "7d",
       });
-      res.json({ token });
+      res.json({ token, username, score });
     }
   });
 };

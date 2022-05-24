@@ -7,6 +7,8 @@ const verifyJWT = require("../utils/jwtVerify");
 //For adding new users
 router.post("/myteam", verifyJWT, usersController.createUserTeam);
 
+router.get("/myteam", verifyJWT, usersController.getUserTeam);
+
 // To get specific user based on id
 router.get("/migratetouserlogin", usersController.createUserLogin);
 

@@ -94,9 +94,9 @@ module.exports.getLeaderboard = async (req, res) => {
 };
 
 module.exports.getUserTeam = async (req, res) => {
-  const username = req.jwtusername;
+  const useremail = req.jwtemail;
 
-  db.myteams.findOne({ where: { username: username } }).then((user) => {
+  db.myteams.findOne({ where: { useremail } }).then((user) => {
     if (user) {
       res.send(user);
     } else {

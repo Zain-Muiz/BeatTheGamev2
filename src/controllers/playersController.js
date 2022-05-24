@@ -7,8 +7,6 @@ module.exports.GetAllPlayers = async (req, res) => {
   const username = req.jwtusername;
   const team1 = req.params.team1;
   const team2 = req.params.team2;
-  console.log(team1);
-  console.log(team2);
 
   db.myteams.findOne({ where: { username: username } }).then((user) => {
     if (user) {

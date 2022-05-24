@@ -1,9 +1,9 @@
-POST http://localhost:3000/login
+POST http://api.btg.istetkmce.in/login
 Content-Type: application/json
 
 {
-    "email": "muiz1@gmail.com",
-    "password": "heyy@2022"
+    "email": "a@gmail.com",
+    "password": "123456"
 }
 
 ###
@@ -27,5 +27,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/createnewteam/:team1/:team2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11aXoxQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibXVpejFuYW1lIiwiaWF0IjoxNjUzMzUxMjI2LCJleHAiOjE2NTM5NTYwMjZ9.AKObMBID_p8A-wzadZdGvdC1HGKmAWyLNJq_1XjsyVM
+GET http://api.btg.istetkmce.in/users/myteam
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJyb2hhbmdlb3JnZTIwMDEiLCJpYXQiOjE2NTMzOTE2NDgsImV4cCI6MTY1Mzk5NjQ0OH0.fL8ObN2mfr-gw1Hnp3FsG6tHbwM8VyGyUQc0IqwNUlI

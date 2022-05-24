@@ -8,7 +8,7 @@ const host = process.env.HOST;
 const port = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://localhost:3000", "http://btg.istetkmce.in"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -32,6 +32,10 @@ app.use("/login", loginRoute);
 // players route
 const playersRoute = require("./routes/players.routes");
 app.use("/createnewteam", playersRoute);
+
+// admin route
+const adminRoute = require("./routes/admin.routes");
+app.use("/admin", adminRoute);
 
 app.listen(port, () => {
   console.log(`Server running at http://${host}:${port}`);

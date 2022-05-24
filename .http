@@ -1,23 +1,27 @@
-POST 
-
+POST http://localhost:3000/login
+Content-Type: application/json
 
 {
-"environment": 1,
-"teacher_id": 45,
-"subject_id": 1271,
-"Option[1]": 3,
-"Option[2]": 8,
-"Option[3]": 13,
-"Option[4]": 18,
-"Option[5]": 23,
-"Option[6]": 28,
-"Option[7]": 33,
-"Option[8]": 38,
-"Option[9]": 43,
-"Option[10]": 49,
-"Option[11]": 53,
-"Option[12]": 58,
-"AnswerDetail[remark]": ,
-"AnswerDetail[special_remark]": ,
-"yt0": 
+    "email": "muiz1@gmail.com",
+    "password": "heyy@2022"
+}
+
+###
+
+POST http://localhost:3000/users/myteam
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11aXoxQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibXVpejFuYW1lIiwiaWF0IjoxNjUzMzUxMjI2LCJleHAiOjE2NTM5NTYwMjZ9.AKObMBID_p8A-wzadZdGvdC1HGKmAWyLNJq_1XjsyVM
+Content-Type: application/json
+
+{
+    "p1": "p1",
+      "p2": "p2",
+      "p3": "p3",
+      "p4": "p4",
+      "p5": "p5",
+      "p6": "p6",
+      "p7": "p7",
+      "p8": "p8",
+      "p9": "p9",
+      "p10": "p10",
+      "p11": "p11"
 }

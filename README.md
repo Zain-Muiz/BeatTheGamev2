@@ -4,8 +4,15 @@
 <hr>
 
 ### Tech Stack Used :
- - Node.js
- - React.js
+
+- Node.js
+- React.js
+
+### Defined EndPoints :
+
+- users/migratetouserlogin - migrates registered users to userlogin
+- /login - handles login
 
 ### Terms and Conditions :
- - Use only for internal university purposes. Using publicly with real names of teams and players could be considered as infringement of copyright
+
+- Use only for internal university purposes. Using publicly with real names of teams and players could be considered as infringement of copyright

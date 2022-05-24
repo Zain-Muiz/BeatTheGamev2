@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  deptscore.init(
+  Deptscore.init(
     {
       name: DataTypes.STRING,
       score: DataTypes.INTEGER,

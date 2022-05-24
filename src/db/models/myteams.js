@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  myteam.init(
+  Myteam.init(
     {
-      id: DataTypes.INTEGER,
       useremail: DataTypes.STRING,
+      username: DataTypes.STRING,
       p1: DataTypes.STRING,
       p2: DataTypes.STRING,
       p3: DataTypes.STRING,
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "myteam",
+      modelName: "myteams",
     }
   );
   return Myteam;

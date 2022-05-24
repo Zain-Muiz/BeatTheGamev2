@@ -11,9 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  players.init(
+  Players.init(
     {
-      id: DataTypes.INTEGER,
       name: DataTypes.STRING,
       img: DataTypes.STRING,
       skill: DataTypes.STRING,

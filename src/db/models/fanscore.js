@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  fanscore.init(
+  Fanscore.init(
     {
       name: DataTypes.STRING,
       score: DataTypes.INTEGER,
     },
     {
       sequelize,
-      modelName: "fanscore",
+      modelName: "fanscores",
     }
   );
   return Fanscore;

@@ -25,3 +25,7 @@ Content-Type: application/json
       "p10": "p10",
       "p11": "p11"
 }
+
+###
+GET http://localhost:3000/createnewteam/:team1/:team2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11aXoxQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibXVpejFuYW1lIiwiaWF0IjoxNjUzMzUxMjI2LCJleHAiOjE2NTM5NTYwMjZ9.AKObMBID_p8A-wzadZdGvdC1HGKmAWyLNJq_1XjsyVM

@@ -8,35 +8,53 @@ const { Op } = require("sequelize");
 module.exports.calculateTeamScores = async (req, res) => {
   const team1 = req.params.team1;
   const team2 = req.params.team2;
+  let z = 0;
   db.players
     .findAll({
       where: {
         [Op.or]: [{ team: team1 }, { team: team2 }],
       },
     })
-    .then((result) => {
-      playersnamelist = result.name;
-      playerscorelist = result.score;
+    .then(async (result) => {
+      playernamemap = [];
+      playerscoremap = [];
+      await result.forEach(async (player) => {
+        playernamemap.push(player.name);
+        playerscoremap.push(player.score);
+      });
+      console.log(playernamemap.indexOf("p2"));
     });
   db.myteams
     .findAll()
     .then((users) => {
+      console.log(users.length);
       users.forEach((user) => {
-        const { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } = user;
+        const { useremail, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } =
+          user;
         selectedplayers = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11];
+        let i = 1;
         let tscore = 0;
         selectedplayers.forEach((player) => {
-          if (player == result.name) {
-            tscore += result.score;
+          let index = playernamemap.indexOf(player);
+          if (index != -1) {
+            let playerscore = playerscoremap[index];
+            if (i == 1) {
+              tscore += 2 * playerscore;
+              i++;
+              console.log("i1", tscore);
+            } else if (i == 2) {
+              tscore += 1.5 * playerscore;
+              i++;
+              console.log("i2", tscore);
+            } else {
+              tscore += playerscore;
+            }
           }
-          db.myteams.update(tscore, { where: { name: player } }).then(() => {
-            res.send("Scores added successfully");
-          });
         });
+        db.myteams.update({ tscore }, { where: { useremail } }).then(() => {});
       });
     })
     .catch((err) => {
-      console.log(ValidationErrorItem);
       console.log(err);
       res.status(500).send({
         message: err.message || "Error occurred while updating user score.",
@@ -65,13 +83,16 @@ module.exports.addPlayerScore = async (req, res) => {
 
 module.exports.playerScoreSubmission = async (req, res) => {
   const playerScores = req.body;
-  playerScores.forEach((player) => {
-    score = player.score;
+  console.log(playerScores);
+  console.log(Object.keys(playerScores));
+  Object.keys(playerScores).forEach((player) => {
+    console.log(player);
+    let score = playerScores[player].score;
+    let name = playerScores[player].name;
     db.players
-      .update(score, { where: { name: player.name } })
-      .then((result) => res.send(result))
+      .update({ score }, { where: { name } })
+      .then((result) => {})
       .catch((err) => {
-        console.log(ValidationErrorItem);
         console.log(err);
         res.status(500).send({
           message:

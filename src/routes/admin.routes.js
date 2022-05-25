@@ -8,6 +8,6 @@ router.get(
   adminController.calculateTeamScores
 );
 router.get("/addplayerscore/:team1/:team2", adminController.addPlayerScore);
-router.post("/submitplayerscore", adminController.playerScoreSubmission);
+router.put("/submitplayerscore", adminController.playerScoreSubmission);
 
 module.exports = router;

@@ -9,7 +9,7 @@ module.exports.calculateTeamScores = async (req, res) => {
   const team1 = req.params.team1;
   const team2 = req.params.team2;
   let z = 0;
-  db.players
+  await db.players
     .findAll({
       where: {
         [Op.or]: [{ team: team1 }, { team: team2 }],
@@ -22,13 +22,12 @@ module.exports.calculateTeamScores = async (req, res) => {
         playernamemap.push(player.name);
         playerscoremap.push(player.score);
       });
-      console.log(playernamemap.indexOf("p2"));
     });
-  db.myteams
+  await db.myteams
     .findAll()
     .then((users) => {
       console.log(users.length);
-      users.forEach((user) => {
+      users.forEach(async (user) => {
         const { useremail, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } =
           user;
         selectedplayers = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11];
@@ -38,6 +37,7 @@ module.exports.calculateTeamScores = async (req, res) => {
           let index = playernamemap.indexOf(player);
           if (index != -1) {
             let playerscore = playerscoremap[index];
+            parseInt(playerscore);
             if (i == 1) {
               tscore += 2 * playerscore;
               i++;
@@ -51,7 +51,9 @@ module.exports.calculateTeamScores = async (req, res) => {
             }
           }
         });
-        db.myteams.update({ tscore }, { where: { useremail } }).then(() => {});
+        await db.myteams
+          .update({ tscore }, { where: { useremail } })
+          .then(() => {});
       });
     })
     .catch((err) => {
@@ -60,6 +62,7 @@ module.exports.calculateTeamScores = async (req, res) => {
         message: err.message || "Error occurred while updating user score.",
       });
     });
+  res.send("My Team Score updated successfully");
 };
 
 module.exports.addPlayerScore = async (req, res) => {

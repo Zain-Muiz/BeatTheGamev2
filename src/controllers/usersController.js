@@ -75,10 +75,10 @@ module.exports.createUserTeam = async (req, res) => {
 };
 
 module.exports.getLeaderboard = async (req, res) => {
-  db.userlogins
+  db.myteams
     .findAll({
-      attributes: ["username", "batch", "score"],
-      order: [["score", "DESC"]],
+      attributes: ["username", "tscore"],
+      order: [["tscore", "DESC"]],
       limit: 10,
     })
     .then((leaders) => {

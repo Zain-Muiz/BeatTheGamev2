@@ -26,7 +26,6 @@ module.exports.calculateTeamScores = async (req, res) => {
   await db.myteams
     .findAll()
     .then((users) => {
-      console.log(users.length);
       users.forEach(async (user) => {
         const { useremail, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11 } =
           user;
@@ -36,8 +35,8 @@ module.exports.calculateTeamScores = async (req, res) => {
         selectedplayers.forEach((player) => {
           let index = playernamemap.indexOf(player);
           if (index != -1) {
-            let playerscore = playerscoremap[index];
-            parseInt(playerscore);
+            let playerscore1 = playerscoremap[index];
+            let playerscore = parseInt(playerscore1);
             if (i == 1) {
               tscore += 2 * playerscore;
               i++;
@@ -51,6 +50,7 @@ module.exports.calculateTeamScores = async (req, res) => {
             }
           }
         });
+
         await db.myteams
           .update({ tscore }, { where: { useremail } })
           .then(() => {});

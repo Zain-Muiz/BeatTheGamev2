@@ -3,7 +3,7 @@ const app = express();
 const db = require("../db/models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 
 module.exports.calculateTeamScores = async (req, res) => {
   const team1 = req.params.team1;
@@ -103,5 +103,21 @@ module.exports.playerScoreSubmission = async (req, res) => {
             "Error occurred while updating player score. Try Again",
         });
       });
+  });
+};
+
+module.exports.calculateUserTotalScore = async (req, res) => {
+  db.myteams.findAll().then(async (result) => {
+    await result.forEach(async (player) => {
+      db.userlogins
+        .findOne({ where: { useremail: player.useremail } })
+        .then(async (user) => {
+          if (user) {
+            score = user.score + player.tscore;
+            user.update({ score });
+          }
+        });
+    });
+    res.send("Total Team Score updated successfully");
   });
 };

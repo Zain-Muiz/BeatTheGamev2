@@ -9,5 +9,9 @@ router.get(
 );
 router.get("/addplayerscore/:team1/:team2", adminController.addPlayerScore);
 router.put("/submitplayerscore", adminController.playerScoreSubmission);
+router.get(
+  "/addmatchscoretototalscore",
+  adminController.calculateUserTotalScore
+);
 
 module.exports = router;
